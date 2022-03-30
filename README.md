@@ -32,6 +32,7 @@
 | shipping_area_id   | integer    | null: false                    |
 | description        | text       | null: false                    |
 | shipping_date_id   | integer    | null: false                    |
+| costumer           | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -51,17 +52,17 @@
 
 ### Association
 
-- belongs_to :purchases
+- belongs_to :purchase
 
 ## purchases テーブル
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | user        | references | null: false, foreign_key: true |
-| costumer_id | references | null: false, foreign_key: true |
+| costumer    | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_many :items
+- belongs_to :item
 - belongs_to :shipping
