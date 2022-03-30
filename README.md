@@ -17,7 +17,7 @@
 ### Association
 
 - has_many :items
-- has_one :purchase
+- has_many :purchases
 
 ## items テーブル
 
@@ -51,14 +51,14 @@
 
 ### Association
 
-- has_many :purchases
+- belongs_to :purchases
 
 ## purchases テーブル
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | user        | references | null: false, foreign_key: true |
-| costumer_id | integer    | null: false, foreign_key: true |
+| costumer_id | references | null: false, foreign_key: true |
 
 ### Association
 
