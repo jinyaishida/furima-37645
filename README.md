@@ -32,7 +32,7 @@
 | shipping_area_id   | integer    | null: false                    |
 | description        | text       | null: false                    |
 | shipping_date_id   | integer    | null: false                    |
-| costumer           | references | null: false, foreign_key: true |
+
 
 ### Association
 
@@ -49,6 +49,8 @@
 | street           | string     | null: false                    |
 | building         | string     |                                |
 | phone            | string     | null: false                    |
+| purchases        | references | null: false, foreign_key: true |
+
 
 ### Association
 
@@ -59,10 +61,10 @@
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | user        | references | null: false, foreign_key: true |
-| costumer    | references | null: false, foreign_key: true |
+| item        | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :shipping
+- has_one :shipping
