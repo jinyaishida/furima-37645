@@ -39,6 +39,30 @@ end
       @user.valid?
       expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
+    it "passwordが129文字以上では登録できない" do
+      @user.password = '1a'*129
+      @user.password_confirmation = '1a'*129
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password is too long (maximum is 128 characters)")
+    end
+    it "英字のみのパスワードでは登録できない" do
+      @user.password = 'eeeeeeee'
+      @user.password_confirmation = 'eeeeeeee'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password Password には英字と数字の両方を含めて設定してください")
+    end
+    it "数字のみのパスワードでは登録できない" do
+      @user.password = '00000000'
+      @user.password_confirmation = '00000000'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password Password には英字と数字の両方を含めて設定してください")
+    end
+    it "全角文字を含むパスワードでは登録できない" do
+      @user.password = '000000じ'
+      @user.password_confirmation = '000000じ'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password Password には英字と数字の両方を含めて設定してください")
+    end
     it '重複したemailが存在する場合は登録できない' do
       @user.save
       another_user = FactoryBot.build(:user, email: @user.email)
