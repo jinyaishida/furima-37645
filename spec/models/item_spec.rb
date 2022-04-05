@@ -22,12 +22,12 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
-      it 'shipping_methodが空では登録できない' do
+      it 'shipping_methodが未選択項目（idの１）を選択すると登録できない' do
         @item.shipping_method_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping method can't be blank")
       end
-      it 'categoryが空では登録できない' do
+      it 'categoryが未選択項目（idの１）を選択すると登録できない空では登録できない' do
         @item.category_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
@@ -37,12 +37,12 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("User can't be blank")
       end
-      it 'conditionが空では登録できない' do
+      it 'conditionが未選択項目（idの１）を選択すると登録できない' do
         @item.condition_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
-      it 'shipping_areaが空では登録できない' do
+      it 'shipping_areaが未選択項目（idの１）を選択すると登録できない' do
         @item.shipping_area_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping area can't be blank")
@@ -52,7 +52,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
-      it 'shipping_dateが空では登録できない' do
+      it 'shipping_dateが未選択項目（idの１）を選択すると登録できない' do
         @item.shipping_date_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping date can't be blank")
@@ -66,6 +66,16 @@ RSpec.describe Item, type: :model do
         @item.price = '10000000'
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
+      it "priceに半角数字以外が含まれると登録できない" do
+        @item.price = 'eじ'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+      it "画像が空では登録できない" do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank")
       end
     end
   end
