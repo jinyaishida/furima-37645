@@ -138,7 +138,7 @@
       </h3>
       <span class="price">
         <p></p>
-      </span><%= "#{item.price} 円"%>
+      </span><%= "#{item.price} 円"%><br>(税込み)</span>
       <span class="shipping_method">
         <p><%= item.shipping_method.name %></p>
       </span>
@@ -147,7 +147,8 @@
        <span class='star-count'>0</span>
       </li>
       <% end %>
-
+      
+      <% if @items.length == 0 %>
       <li class='list'>
         <%= link_to "#" do %>
         <div class='item-img-content'>
@@ -160,6 +161,7 @@
           <%# //商品が売れていればsold outを表示しましょう %>
 
         </div>
+        
         <div class='item-info'>
           <h3 class='item-name'>
             <%= "商品名" %>
@@ -178,7 +180,7 @@
 
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
       <%# 商品がある場合は表示されないようにしましょう %>
-      <% if @items.length == 0 %>
+      
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
