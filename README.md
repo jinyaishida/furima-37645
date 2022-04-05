@@ -38,6 +38,11 @@
 
 - belongs_to :user
 - has_one :purchase
+- belongs_to_active_hash :category
+- belongs_to_active_hash :condition
+- belongs_to_active_hash :shipping_method
+- belongs_to_active_hash :prefectures
+- belongs_to_active_hash :shopping_date
 
 ## shippings テーブル
 
@@ -68,3 +73,4 @@
 - belongs_to :user
 - belongs_to :item
 - has_one :shipping
+- has_one_active_hash :prefectures
