@@ -23,12 +23,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it 'shipping_methodが未選択項目（idの１）を選択すると登録できない' do
-        @item.shipping_method_id = ''
+        @item.shipping_method_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping method can't be blank")
       end
       it 'categoryが未選択項目（idの１）を選択すると登録できない空では登録できない' do
-        @item.category_id = ''
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
@@ -38,12 +38,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("User can't be blank")
       end
       it 'conditionが未選択項目（idの１）を選択すると登録できない' do
-        @item.condition_id = ''
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
       it 'shipping_areaが未選択項目（idの１）を選択すると登録できない' do
-        @item.shipping_area_id = ''
+        @item.shipping_area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping area can't be blank")
       end
@@ -53,7 +53,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
       it 'shipping_dateが未選択項目（idの１）を選択すると登録できない' do
-        @item.shipping_date_id = ''
+        @item.shipping_date_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping date can't be blank")
       end
