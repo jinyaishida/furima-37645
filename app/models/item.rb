@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   validates :shipping_method_id, presence: true
   validates :category_id, presence: true
   validates :condition_id, presence: true
-  validates :shipping_area_id, presence: true
+ #validates :shipping_area_id, presence: true
   validates :description, presence: true
   validates :shipping_date_id, presence: true
   validates :user, presence: true
@@ -15,14 +15,14 @@ class Item < ApplicationRecord
   with_options numericality: { other_than: 1, message: "can't be blank"} do
     validates :category_id
     validates :condition_id
-    validates :shipping_area_id
+   #validates :shipping_area_id
     validates :shipping_date_id
     validates :shipping_method_id
   end
 
 
  belongs_to :user
- #has_one :purchase
+ has_one :purchase
  has_one_attached :image
 
  extend ActiveHash::Associations::ActiveRecordExtensions
