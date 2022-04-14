@@ -1,6 +1,8 @@
-#class Purchase < ApplicationRecord
+class Purchase < ApplicationRecord
 
-#belongs_to :user
-#belongs_to :item
+belongs_to :user
+belongs_to :item
+has_one    :shipping
 
-#end
+
+end
