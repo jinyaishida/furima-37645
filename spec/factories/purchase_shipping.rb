@@ -4,6 +4,7 @@ FactoryBot.define do
     shipping_area_id   {2}
     city               {"出雲市"}
     street             { '1-1' }
+    building           { '' }
     phone              { '08081111234' }
     token              { "tok_abcdefghijk00000000000000000" }
   end
