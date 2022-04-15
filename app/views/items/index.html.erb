@@ -161,7 +161,7 @@
         <%= link_to "#" do %>
         <div class='item-img-content'>
           <%= image_tag "item-sample.png", class: "item-img" %>
-          <% if item.purchase %>
+          <% if @item.purchase %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
