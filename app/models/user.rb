@@ -11,10 +11,10 @@ class User < ApplicationRecord
   validates :birthday, presence: true
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates_format_of :password, with:  VALID_PASSWORD_REGEX, message: 'Password には英字と数字の両方を含めて設定してください'
+  validates_format_of :password, with:  VALID_PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください'
 
-  validates :first_name,:last_name, format: {with:/\A[ぁ-んァ-ヶ一-龥々ー]+\z/,message: 'Full-width characters'}
-  validates :first_name_kana,:last_name_kana, format: {with: /\A[ァ-ヶー－]+\z/,message: 'Full-width katakana characters'}
+  validates :first_name,:last_name, format: {with:/\A[ぁ-んァ-ヶ一-龥々ー]+\z/,message: 'を全角で入力してください'}
+  validates :first_name_kana,:last_name_kana, format: {with: /\A[ァ-ヶー－]+\z/,message: 'を全角カタカナで入力してください'}
 
   has_many :items
 end
